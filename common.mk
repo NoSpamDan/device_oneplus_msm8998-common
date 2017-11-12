@@ -373,6 +373,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     OnePlusPocketMode
 
+# Ramdisk
+PRODUCT_PACKAGES += \
+    init.safailnet.rc
+
 # RCS
 PRODUCT_PACKAGES += \
     rcs_service_aidl \
