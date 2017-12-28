@@ -131,6 +131,9 @@ on property:wlan.driver.status=ok
     setprop vendor.usb.dpl.inst.name "dpl"
     setprop sys.usb.configfs 1
 
+    #DT2W enable
+    write /proc/touchpanel/double_tap_enable 1
+
 #Peripheral manager
 service vendor.per_mgr /vendor/bin/pm-service
     class core
