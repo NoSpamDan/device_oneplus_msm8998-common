@@ -276,12 +276,12 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.oneplus_8998
 
 # LiveDisplay native
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@1.0-service-sdm \
-    vendor.lineage.livedisplay-V1.0-java
-
-PRODUCT_BOOT_JARS += \
-    vendor.lineage.livedisplay-V1.0-java
+#PRODUCT_PACKAGES += \
+#    vendor.lineage.livedisplay@1.0-service-sdm \
+#    vendor.lineage.livedisplay-V1.0-java
+#
+#PRODUCT_BOOT_JARS += \
+#    vendor.lineage.livedisplay-V1.0-java
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -433,7 +433,7 @@ PRODUCT_PACKAGES += \
 
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2018-11-01
+    ro.candy.build.vendor_security_patch=2018-11-01
 
 # Vibrator
 PRODUCT_PACKAGES += \
