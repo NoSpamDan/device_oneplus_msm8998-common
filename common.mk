@@ -179,9 +179,12 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.0 \
     vendor.display.config@1.0_vendor
 
-# Doze
-PRODUCT_PACKAGES += \
-    OneplusDoze
+# OnePlusDoze/OnePlusPocketMode
+# Removed as required by CustomDoze, called in 
+#     vendor/candy/configs/system_additions.mk
+# PRODUCT_PACKAGES += \
+#     OneplusDoze \
+#     OneplusPocketMode
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -193,8 +196,8 @@ PRODUCT_PACKAGES += \
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service \
-    fingerprintd \
-    OneplusPocketMode
+    fingerprintd
+
 
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
