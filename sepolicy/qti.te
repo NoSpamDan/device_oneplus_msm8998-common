@@ -1,3 +1,0 @@
-allow qti diag_device:chr_file { read write open ioctl };
-allow qti sysfs_data:file { read open };
-
