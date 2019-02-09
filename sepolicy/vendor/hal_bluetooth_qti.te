@@ -1,7 +1,2 @@
-allow hal_bluetooth_qti wcnss_filter:unix_stream_socket { connectto };
-
-allow hal_bluetooth_qti nv_data_file:dir { search };
-allow hal_bluetooth_qti nv_data_file:file { r_file_perms };
-
-allow hal_bluetooth_qti vfat:dir { search };
-allow hal_bluetooth_qti crash_dump:process { noatsecure };
+allow hal_bluetooth_qti vendor_radio_data_file:dir { search };
+allow hal_bluetooth_qti vendor_radio_data_file:file { r_file_perms };
