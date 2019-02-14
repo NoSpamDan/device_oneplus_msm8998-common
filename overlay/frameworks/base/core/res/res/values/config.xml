@@ -512,6 +512,8 @@
 
     <!-- Doze always-on is available -->
     <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+    <!-- Disable AOD by default -->
+    <bool name="config_dozeAlwaysOnEnabled">false</bool>
 
     <string-array name="config_mobile_tcp_buffers">
         <item>lte:2097152,4194304,8388608,262144,524288,1048576</item>
