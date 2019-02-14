@@ -440,10 +440,6 @@ PRODUCT_PACKAGES += \
 # Vendor properties
 -include $(LOCAL_PATH)/vendor_prop.mk
 
-# Vendor security patch level
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.candy.build.vendor_security_patch=2018-12-01
-
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
