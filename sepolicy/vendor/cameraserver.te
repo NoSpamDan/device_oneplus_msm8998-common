@@ -14,3 +14,4 @@ allow cameraserver hal_configstore_ISurfaceFlingerConfigs:hwservice_manager { fi
 binder_call(cameraserver, hal_configstore_default)
 
 allow cameraserver nfc_data_file:dir { search };
+binder_call(cameraserver, mediacodec)
