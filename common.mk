@@ -180,13 +180,6 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.0 \
     vendor.display.config@1.0_vendor
 
-# OnePlusDoze/OnePlusPocketMode
-# Removed as required by CustomDoze, called in 
-#     vendor/candy/configs/system_additions.mk
-# PRODUCT_PACKAGES += \
-#     OneplusDoze \
-#     OneplusPocketMode
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
