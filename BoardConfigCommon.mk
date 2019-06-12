@@ -248,7 +248,8 @@ TARGET_PROVIDES_KEYMASTER := true
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Lineage Hardware
-#JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(PLATFORM_PATH)/lineagehw|**/*.java
+BOARD_HARDWARE_CLASS += \
+    $(COMMON_PATH)/lineagehw
 
 # NFC
 BOARD_NFC_CHIPSET := pn553
