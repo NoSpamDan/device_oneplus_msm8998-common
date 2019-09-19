@@ -82,30 +82,6 @@ on post-fs
     chown system system /mnt/vendor/persist/OPDiagnose
     chown system system /sys/class/power_supply/battery/connect_disable
 
-on post-fs-data
-    # Nfc
-    mkdir /data/vendor/nfc 0770 nfc nfc
-
-    # Radio
-    mkdir /data/vendor/oemnvitems 0771 radio radio
-
-    # Fingerprint
-    mkdir /data/vendor_de/silead 0770 system system
-    mkdir /mnt/vendor/persist/silead 0777 system system
-    mkdir /mnt/vendor/persist/goodix 0777 system system
-
-    #mediaserver, lifei add for Watchdog monitoring mediaextractor process. 2017/08/11
-    mkdir /mnt/vendor/persist/hdcp/media_dump 0770 mediaex mediadrm
-
-    mkdir /persist/hdcp  775 media mediadrm
-    mkdir /mnt/vendor/persist/hdcp  775 media mediadrm
-
-    mkdir /data/vendor/misc/qsee/face/  0770 system system
-
-    #insmod /vendor/lib/modules/opchain.ko
-    #insmod /vendor/lib/modules-aging/opchain.ko
-
-#changhua add for fingerint
 on boot
     chmod 0664 /sys/devices/soc/soc:fpc_fpc1020/irq
     chown system system /sys/devices/soc/soc:fpc_fpc1020/irq
