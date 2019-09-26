@@ -94,15 +94,15 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect@5.0-impl \
     audio.a2dp.default \
     #audio_amplifier.msm8998 \
-    #audio.primary.msm8998 \
-    #audio.r_submix.default \
-    #audio.usb.default \
-    #libaudio-resampler \
-    #libqcompostprocbundle \
-    #libqcomvisualizer \
-    #libqcomvoiceprocessing \
-    #libvolumelistener \
-    #tinymix
+    audio.primary.msm8998 \
+    audio.r_submix.default \
+    audio.usb.default \
+    libaudio-resampler \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    libvolumelistener \
+    tinymix
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
