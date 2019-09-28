@@ -444,6 +444,11 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-service \
     thermal.msm8998
 
+# tri-state-key
+PRODUCT_PACKAGES += \
+    TriStateHandler \
+    tri-state-key_daemon
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
