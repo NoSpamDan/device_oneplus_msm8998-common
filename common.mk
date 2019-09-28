@@ -446,6 +446,7 @@ PRODUCT_PACKAGES += \
 
 # tri-state-key
 PRODUCT_PACKAGES += \
+    TriStateHandler \
     tri-state-key_daemon
 
 # USB
