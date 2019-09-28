@@ -133,6 +133,7 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0 \
     libbt-vendor \
     libbthost_if \
     bt-mac-generator
@@ -273,7 +274,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.oneplus_8998
+    android.hardware.light@2.0-service.oneplus_msm8998
 
 # LiveDisplay native
 #PRODUCT_PACKAGES += \
@@ -392,10 +393,11 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full
 
 PRODUCT_PACKAGES += \
-    ims-ext-common \
+    ims-ext-common_system \
     telephony-ext
 
 PRODUCT_BOOT_JARS += \
+    ims-ext-common_system \
     telephony-ext
 
 # Seccomp policy
@@ -502,8 +504,8 @@ PRODUCT_PACKAGES += \
     libaacwrapper \
     libnl
 
-#PRODUCT_BOOT_JARS += \
-#    WfdCommon
+PRODUCT_BOOT_JARS += \
+    WfdCommon
 
 # Inherit from oppo-common
 #$(call inherit-product, device/oppo/common/common.mk)
