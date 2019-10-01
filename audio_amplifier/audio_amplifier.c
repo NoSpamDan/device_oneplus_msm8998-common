@@ -27,7 +27,6 @@
 
 #include <hardware/audio_amplifier.h>
 #include <hardware/hardware.h>
-#include <processgroup/sched_policy.h>
 
 #include "platform.h"
 #include "audio_hw.h"
