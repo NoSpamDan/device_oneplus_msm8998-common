@@ -432,11 +432,11 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>vendor.lineage.touch</name>
+        <name>vendor.nxp.hardware.nfc</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
-            <name>ITouchscreenGesture</name>
+            <name>INqNfc</name>
             <instance>default</instance>
         </interface>
     </hal>
