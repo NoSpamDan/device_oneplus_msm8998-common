@@ -91,12 +91,6 @@ TARGET_KERNEL_CLANG_COMPILE := true
 #TARGET_KERNEL_CLANG_VERSION := 9.0.6
 
 #export CROSS_COMPILE_ARM32 = prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
-
-# Bringup
-BUILD_BROKEN_DUP_RULES :=true
-BUILD_BROKEN_PHONY_TARGETS := true
-TARGET_USES_HARDWARE_QCOM_GPS := false
-
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
