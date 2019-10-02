@@ -1,7 +1,0 @@
-#type hal_livedisplay_oneplus_msm8998, domain;
-#type hal_livedisplay_oneplus_msm8998_exec, exec_type, vendor_file_type, file_type;
-
-#hal_server_domain(hal_livedisplay_oneplus_msm8998, hal_lineage_livedisplay)
-
-# Allow LiveDisplay to set vendor display props
-#set_prop(hal_livedisplay_oneplus_msm8998, vendor_display_prop);
