@@ -82,7 +82,6 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
 TARGET_KERNEL_CONFIG := lineage_oneplus5_defconfig
-#TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-androidkernel-
 
 # Clang
 TARGET_KERNEL_CLANG_VERSION := r353983c
@@ -90,7 +89,6 @@ TARGET_KERNEL_CLANG_VERSION := r353983c
 TARGET_KERNEL_CLANG_COMPILE := true
 #TARGET_KERNEL_CLANG_VERSION := 9.0.6
 
-#export CROSS_COMPILE_ARM32 = prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
@@ -217,12 +215,14 @@ SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
-# Enable dexpreopt to speed boot time
+# Dexpreopt
 ifeq ($(HOST_OS),linux)
-  ifneq ($(TARGET_BUILD_VARIANT),eng)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-      WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
+  ifeq ($(WITH_DEXPREOPT),)
+    WITH_DEXPREOPT := true
+    WITH_DEXPREOPT_PIC := true
+    ifneq ($(TARGET_BUILD_VARIANT),user)
+      # Retain classes.dex in APK's for non-user builds
+      DEX_PREOPT_DEFAULT := nostripping
     endif
   endif
 endif
@@ -252,13 +252,6 @@ TARGET_PROVIDES_KEYMASTER := true
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-# Lineage Hardware
-#JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(PLATFORM_PATH)/lineagehw|**/*.java
-
-# NFC
-BOARD_NFC_CHIPSET := pn553
-TARGET_USES_NQ_NFC := true
-
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -272,6 +265,7 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_MKE2FS := true
 
 # Power

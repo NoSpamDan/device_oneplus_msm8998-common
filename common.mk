@@ -92,6 +92,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@5.0-impl \
     android.hardware.audio@2.0-service \
     android.hardware.audio.effect@5.0-impl \
+    android.hardware.soundtrigger@2.2-impl \
     audio.a2dp.default \
     audio.primary.msm8998 \
     audio.r_submix.default \
@@ -188,8 +189,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service \
-    android.hardware.drm@1.1-service.clearkey \
-    android.hardware.drm@1.1-service.widevine
+    android.hardware.drm@1.2-service.clearkey \
+    android.hardware.drm@1.2-service.widevine
 
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
@@ -246,8 +247,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     org.ifaa.android.manager
 
-#PRODUCT_BOOT_JARS += \
-#    org.ifaa.android.manager
+PRODUCT_BOOT_JARS += \
+    org.ifaa.android.manager
 
 # IPv6
 PRODUCT_PACKAGES += \
@@ -274,14 +275,6 @@ PRODUCT_PACKAGES += \
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.oneplus_msm8998
-
-# LiveDisplay native
-#PRODUCT_PACKAGES += \
-#    vendor.lineage.livedisplay@1.0-service-sdm \
-#    vendor.lineage.livedisplay-V1.0-java
-#
-#PRODUCT_BOOT_JARS += \
-#    vendor.lineage.livedisplay-V1.0-java
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -310,20 +303,13 @@ PRODUCT_PACKAGES += \
     libandroid_net \
     netutils-wrapper-1.0
 
+
 # NFC
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.0-impl \
+    android.hardware.nfc@1.1-service \
     com.android.nfc_extras \
-    com.nxp.nfc.nq \
-    com.nxp.nfc.nq.xml \
-    libnqnfc-nci \
-    libnqp61-jcop-kit \
-    nfc_nci.nqx.default \
-    NQNfcNci \
-    nqnfcee_access.xml \
-    nqnfcse_access.xml \
-    Tag \
-    vendor.nxp.hardware.nfc@1.1-service
+    NfcNci \
+    Tag
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libese-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libese-nxp.conf \
@@ -399,11 +385,10 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full
 
 PRODUCT_PACKAGES += \
-    ims-ext-common_system \
+    ims-ext-common \
     telephony-ext
 
 PRODUCT_BOOT_JARS += \
-    ims-ext-common_system \
     telephony-ext
 
 # Seccomp policy

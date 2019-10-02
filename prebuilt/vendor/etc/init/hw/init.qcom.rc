@@ -540,7 +540,6 @@ service qcom-c_core-sh  /vendor/bin/init.qcom.class_core.sh
 
 service qcom-c_main-sh /vendor/bin/init.class_main.sh
     class main
-    group root system radio
     user root
     oneshot
 
@@ -1162,9 +1161,6 @@ service poweroffhandler /system/vendor/bin/poweroffhandler
     disabled
     oneshot
 
-on property:init.svc.surfaceflinger=restarting
-    stop  vendor.hwcomposer-2-1
-    start vendor.hwcomposer-2-1
 
 on property:vendor.display.lcd_density=*
     setprop ro.sf.lcd_density ${vendor.display.lcd_density}
