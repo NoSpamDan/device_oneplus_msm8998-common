@@ -455,7 +455,7 @@ PRODUCT_PACKAGES += \
 
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.candy.build.vendor_security_patch=2019-08-01
+    ro.candy.build.vendor_security_patch=2019-10-01
 
 # Verity
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
