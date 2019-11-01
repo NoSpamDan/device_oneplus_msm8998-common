@@ -369,6 +369,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libjson
 
+# Poketmode
+PRODUCT_PACKAGES += \
+    OnePlusPocketMode
+
 # RCS
 PRODUCT_PACKAGES += \
     rcs_service_aidl \
