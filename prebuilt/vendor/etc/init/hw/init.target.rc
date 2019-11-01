@@ -95,6 +95,10 @@ on boot
    chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
    chmod 0660 /dev/cpuset/camera-daemon/tasks
 
+   # Proximity state
+   chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/proximity_state
+   chown system system /sys/devices/soc/soc:fpc_fpc1020/proximity_state
+
    ####Regionalization config and prop files####
    chmod 0644 /persist/speccfg/spec
    chmod 0644 /persist/speccfg/devicetype
