@@ -369,7 +369,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libjson
 
-# Poketmode
+# Pocketmode
 PRODUCT_PACKAGES += \
     OnePlusPocketMode
 
