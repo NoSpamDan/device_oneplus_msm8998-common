@@ -672,17 +672,17 @@
     <integer name="config_doubleTapKeyCode">143</integer>
     <integer name="config_drawOKeyCode">250</integer>
     <integer name="config_twoFingerSwipeKeyCode">251</integer>
-    <integer name="config_drawVKeyCode">255</integer>
+    <integer name="config_drawInverseVKeyCode">252</integer>
     <integer name="config_drawArrowLeftKeyCode">253</integer>
     <integer name="config_drawArrowRightKeyCode">254</integer>
-    <integer name="config_drawInverseVKeyCode">252</integer>
-    <integer name="config_oneFingerSwipeLeftKeyCode">64</integer>
-    <integer name="config_oneFingerSwipeRightKeyCode">63</integer>
-    <integer name="config_drawMKeyCode">247</integer>
+    <integer name="config_drawVKeyCode">255</integer>
     <integer name="config_drawWKeyCode">246</integer>
+    <integer name="config_drawMKeyCode">247</integer>
     <integer name="config_drawSKeyCode">248</integer>
-    <integer name="config_oneFingerSwipeUpKeyCode">66</integer>
+    <integer name="config_oneFingerSwipeRightKeyCode">63</integer>
+    <integer name="config_oneFingerSwipeLeftKeyCode">64</integer>
     <integer name="config_oneFingerSwipeDownKeyCode">65</integer>
+    <integer name="config_oneFingerSwipeUpKeyCode">66</integer>
 
     <!-- Default settings for gestures
              0 - Disabled
@@ -695,7 +695,7 @@
              7 - Open camera
              8 - Open dialer -->
     <integer name="config_doubleTapDefault">1</integer>
-    <integer name="config_drawVDefault">8</integer>
+    <integer name="config_drawVDefault">0</integer>
     <integer name="config_drawInverseVDefault">2</integer>
     <integer name="config_drawODefault">7</integer>
     <integer name="config_twoFingerSwipeDefault">4</integer>
