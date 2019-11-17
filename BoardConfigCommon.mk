@@ -231,6 +231,9 @@ endif
 # Filesystem
 TARGET_FS_CONFIG_GEN += $(PLATFORM_PATH)/config.fs
 
+# Gestures
+TARGET_GESTURES_NODE := "/proc/touchpanel/gesture_enable"
+
 # GPS
 TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
