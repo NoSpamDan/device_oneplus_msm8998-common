@@ -24,9 +24,9 @@
 
 #include "uevent_listener.h"
 
-#define KEY_MODE_NORMAL 601
+#define KEY_MODE_NORMAL 603
 #define KEY_MODE_VIBRATION 602
-#define KEY_MODE_SILENCE 603
+#define KEY_MODE_SILENCE 601
 
 using android::Uevent;
 using android::UeventListener;
