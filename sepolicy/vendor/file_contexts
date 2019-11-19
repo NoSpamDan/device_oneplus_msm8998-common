@@ -67,5 +67,8 @@
 
 /sys/project_info(/.*)?                                         u:object_r:sysfs_data:s0
 
+# Touch HAL
+/vendor\.lineage\.touch@1\.0-service\.oneplus_msm8998    u:object_r:hal_touch_msm8998_exec:s0
+
 # Wifi
 /(vendor|system/vendor)/bin/wifi-mac-generator                  u:object_r:wifi_mac_generator_exec:s0

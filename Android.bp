@@ -14,3 +14,8 @@
 
 soong_namespace {
 }
+
+subdirs = [
+    "touch",
+    "tri-state-key"
+]
