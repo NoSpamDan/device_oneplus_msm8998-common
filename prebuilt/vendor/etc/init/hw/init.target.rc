@@ -131,6 +131,25 @@ on property:wlan.driver.status=ok
     setprop vendor.usb.dpl.inst.name "dpl"
     setprop sys.usb.configfs 1
 
+    #DT2W enable
+    write /proc/touchpanel/double_tap_enable 1
+
+    #Screen Off Gestures
+    write /proc/touchpanel/gesture_enable 1
+    write /proc/touchpanel/double_swipe_enable 1
+    write /proc/touchpanel/down_arrow_enable 1
+    write /proc/touchpanel/down_swipe_enable 1
+    write /proc/touchpanel/left_arrow_enable 1
+    write /proc/touchpanel/left_swipe_enable 1
+    write /proc/touchpanel/letter_m_enable 1
+    write /proc/touchpanel/letter_o_enable 1
+    write /proc/touchpanel/letter_s_enable 1
+    write /proc/touchpanel/letter_w_enable 1
+    write /proc/touchpanel/right_arrow_enable 1
+    write /proc/touchpanel/right_swipe_enable 1
+    write /proc/touchpanel/up_arrow_enable 1
+    write /proc/touchpanel/up_swipe_enable 1
+
 #Peripheral manager
 service vendor.per_mgr /vendor/bin/pm-service
     class core
