@@ -20,6 +20,12 @@ import android.Manifest;
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.media.session.MediaSessionLegacyHelper;
 import android.os.FileObserver;
@@ -31,6 +37,9 @@ import android.os.RemoteException;
 import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.Vibrator;
+import android.provider.Settings;
+import android.util.Log;
+import android.util.SparseIntArray;
 import android.view.KeyEvent;
 
 import com.android.internal.os.DeviceKeyHandler;
@@ -48,14 +57,30 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int GESTURE_REQUEST = 1;
     private static String FPNAV_ENABLED_PROP = "sys.fpnav.enabled";
     public static final String CLIENT_PACKAGE_NAME = "com.oneplus.camera";
-    public static final String CLIENT_PACKAGE_PATH = "/data/vendor/omni/client_package_name";
+    public static final String CLIENT_PACKAGE_PATH = "/data/vendor/candy/client_package_name";
 
     // Slider key codes
     private static final int MODE_NORMAL = 601;
     private static final int MODE_VIBRATION = 602;
     private static final int MODE_SILENCE = 603;
+    private static final SparseIntArray sSupportedSliderZenModes = new SparseIntArray();
+    private static final SparseIntArray sSupportedSliderRingModes = new SparseIntArray();
+    static {
+        sSupportedSliderZenModes.put(Constants.KEY_VALUE_TOTAL_SILENCE, Settings.Global.ZEN_MODE_NO_INTERRUPTIONS);
+        sSupportedSliderZenModes.put(Constants.KEY_VALUE_PRIORTY_ONLY, Settings.Global.ZEN_MODE_IMPORTANT_INTERRUPTIONS);
+        sSupportedSliderZenModes.put(Constants.KEY_VALUE_VIBRATE, Settings.Global.ZEN_MODE_OFF);
+        sSupportedSliderZenModes.put(Constants.KEY_VALUE_NORMAL, Settings.Global.ZEN_MODE_OFF);
+
+        sSupportedSliderRingModes.put(Constants.KEY_VALUE_TOTAL_SILENCE, AudioManager.RINGER_MODE_NORMAL);
+        sSupportedSliderRingModes.put(Constants.KEY_VALUE_ALARMS_ONLY, AudioManager.RINGER_MODE_NORMAL);
+        sSupportedSliderRingModes.put(Constants.KEY_VALUE_PRIORTY_ONLY, AudioManager.RINGER_MODE_NORMAL);
+        sSupportedSliderRingModes.put(Constants.KEY_VALUE_VIBRATE, AudioManager.RINGER_MODE_VIBRATE);
+        sSupportedSliderRingModes.put(Constants.KEY_VALUE_NORMAL, AudioManager.RINGER_MODE_NORMAL);
+    }
 
     private final Context mContext;
+    private final PowerManager mPowerManager;
+    private final NotificationManager mNotificationManager;
     private final AudioManager mAudioManager;
 
     private SensorManager mSensorManager;
@@ -85,6 +110,12 @@ public class KeyHandler implements DeviceKeyHandler {
 
     public KeyHandler(Context context) {
         mContext = context;
+        mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        mNotificationManager
+                = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        mGestureWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
+                "GestureWakeLock");
 
         mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         if (mVibrator == null || !mVibrator.hasVibrator()) {
@@ -105,31 +136,31 @@ public class KeyHandler implements DeviceKeyHandler {
 
     public KeyEvent handleKeyEvent(KeyEvent event) {
         int scanCode = event.getScanCode();
+        String keyCode = Constants.sKeyMap.get(scanCode);
+        int keyCodeValue = Constants.getPreferenceInt(mContext, keyCode);
 
-        switch (scanCode) {
-            case MODE_NORMAL:
-                mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_NORMAL);
-                break;
-            case MODE_VIBRATION:
-                mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_VIBRATE);
-                break;
-            case MODE_SILENCE:
-                mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_SILENT);
-                break;
-            default:
+        if (!hasSetupCompleted()) {
                 return event;
         }
+        if (event.getAction() != KeyEvent.ACTION_UP) {
+            return null;
+        }
+        mAudioManager.setRingerModeInternal(sSupportedSliderRingModes.get(keyCodeValue));
+        mNotificationManager.setZenMode(sSupportedSliderZenModes.get(keyCodeValue), null, TAG);
         doHapticFeedback();
 
         return null;
     }
 
     private void doHapticFeedback() {
-        if (mVibrator == null || !mVibrator.hasVibrator()) {
+        if (mVibrator == null) {
             return;
         }
 
         mVibrator.vibrate(50);
+    }
+    public void handleNavbarToggle(boolean enabled) {
+        SystemProperties.set(FPNAV_ENABLED_PROP, enabled ? "0" : "1");
     }
 
     public boolean canHandleKeyEvent(KeyEvent event) {

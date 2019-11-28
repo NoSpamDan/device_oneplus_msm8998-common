@@ -14,3 +14,7 @@
 
 soong_namespace {
 }
+
+subdirs = [
+    "light"
+]
