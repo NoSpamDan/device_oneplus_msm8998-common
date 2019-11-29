@@ -63,6 +63,47 @@
                 android:persistent="false"
                 android:dependency="enable_gestures" />
 
+            <Preference
+                android:key="gesture_one_finger_up"
+                android:title="@string/gesture_one_finger_up_title"
+                android:persistent="false"
+                android:dependency="enable_gestures" />
+
+            <Preference
+                android:key="gesture_one_finger_right"
+                android:title="@string/gesture_one_finger_right_title"
+                android:persistent="false"
+                android:dependency="enable_gestures" />
+
+            <Preference
+                android:key="gesture_one_finger_down"
+                android:title="@string/gesture_one_finger_down_title"
+                android:persistent="false"
+                android:dependency="enable_gestures" />
+
+            <Preference
+                android:key="gesture_one_finger_left"
+                android:title="@string/gesture_one_finger_left_title"
+                android:persistent="false"
+                android:dependency="enable_gestures" />
+
+            <Preference
+                android:key="gesture_draw_m"
+                android:title="@string/gesture_draw_m_title"
+                android:persistent="false"
+                android:dependency="enable_gestures" />
+
+            <Preference
+                android:key="gesture_draw_w"
+                android:title="@string/gesture_draw_w_title"
+                android:persistent="false"
+                android:dependency="enable_gestures" />
+
+            <Preference
+                android:key="gesture_draw_s"
+                android:title="@string/gesture_draw_s_title"
+                android:persistent="false"
+                android:dependency="enable_gestures" />
         </PreferenceCategory>
 
 </PreferenceScreen>
