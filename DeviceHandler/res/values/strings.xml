@@ -33,9 +33,16 @@
     <string name="gesture_arrow_left_title">Arrow left</string>
     <string name="gesture_arrow_right_title">Arrow right</string>
     <string name="gesture_arrow_up_title">Arrow up</string>
-    <string name="gesture_circle_title">Circle</string>
+    <string name="gesture_circle_title">Draw O</string>
     <string name="gesture_double_swipe_title">Double finger swipe down</string>
     <string name="gesture_double_tap_title">Double tap</string>
+    <string name="gesture_one_finger_up_title">One-finger swipe right</string>
+    <string name="gesture_one_finger_right_title">One-finger swipe right</string>
+    <string name="gesture_one_finger_down_title">One-finger swipe down</string>
+    <string name="gesture_one_finger_left_title">One-finger swipe left</string>
+    <string name="gesture_draw_m_title">Draw M</string>
+    <string name="gesture_draw_w_title">Draw W</string>
+    <string name="gesture_draw_s_title">Draw S</string>
 
      <!-- Notification slider -->
     <string name="notification_slider">Notification slider</string>
