@@ -56,6 +56,13 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int GESTURE_LTR_SCANCODE = 253;
     private static final int GESTURE_GTR_SCANCODE = 254;
     private static final int GESTURE_V_UP_SCANCODE = 255;
+    private static final int GESTURE_ONE_FINGER_UP = 66;
+    private static final int GESTURE_ONE_FINGER_RIGHT = 63;
+    private static final int GESTURE_ONE_FINGER_DOWN = 65;
+    private static final int GESTURE_ONE_FINGER_LEFT = 64;
+    private static final int GESTURE_DRAW_M = 247;
+    private static final int GESTURE_DRAW_W = 246;
+    private static final int GESTURE_DRAW_S = 248;
     // Slider
     private static final int MODE_TOTAL_SILENCE = 600;
     private static final int MODE_ALARMS_ONLY = 601;

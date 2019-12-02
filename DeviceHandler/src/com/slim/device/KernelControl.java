@@ -38,7 +38,13 @@ public final class KernelControl {
     private static String GESTURE_MEDIA_PREVIOUS	= GESTURE_PATH + "right_arrow_enable";
     private static String GESTURE_MEDIA_NEXT		= GESTURE_PATH + "left_arrow_enable";
     private static String GESTURE_SILENT_VIB_SOUND = GESTURE_PATH + "down_arrow_enable";
-
+    private static String GESTURE_ONE_FINGER_UP = "gesture_one_finger_up";
+    private static String GESTURE_ONE_FINGER_RIGHT = "gesture_one_finger_right";
+    private static String GESTURE_ONE_FINGER_DOWN = "gesture_one_finger_down";
+    private static String GESTURE_ONE_FINGER_LEFT = "gesture_one_finger_left";
+    private static String GESTURE_DRAW_M = "gesture_draw_m";
+    private static String GESTURE_DRAW_W = "gesture_draw_w";
+    private static String GESTURE_DRAW_S = "gesture_draw_s";
     // Notification slider
     public static final String KEYCODE_SLIDER_TOP = "/proc/tri-state-key/keyCode_top";
     public static final String KEYCODE_SLIDER_MIDDLE = "/proc/tri-state-key/keyCode_middle";
