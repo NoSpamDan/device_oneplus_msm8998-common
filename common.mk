@@ -395,10 +395,9 @@ PRODUCT_PACKAGES += \
 
 # IMS
 PRODUCT_PACKAGES += \
-    ims-ext-common \
     ims-ext-common_system \
-    telephony-ext \
     ims_ext_common.xml \
+    telephony-ext \
     qti-telephony-hidl-wrapper \
     qti_telephony_hidl_wrapper.xml \
     qti-telephony-utils \
