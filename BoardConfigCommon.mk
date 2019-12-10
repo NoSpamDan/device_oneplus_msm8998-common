@@ -269,6 +269,7 @@ TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
 TARGET_USES_INTERACTION_BOOST := true
 TARGET_USES_NON_LEGACY_POWERHAL := true
 
+
 # Recovery
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/recovery.fstab
 #TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
@@ -279,7 +280,6 @@ TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_oneplus
 TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
 
 # RIL
-#TARGET_RIL_VARIANT := caf
 PROTOBUF_SUPPORTED := true
 
 # Root
