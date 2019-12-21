@@ -143,7 +143,7 @@ public class ScreenKeyHandler implements DeviceKeyHandler {
         public void onSensorChanged(SensorEvent event) {
             mProxyIsNear = event.values[0] < mSensor.getMaximumRange();
             if (DEBUG) Log.d(TAG, "mProxyIsNear = " + mProxyIsNear);
-            if(FileUtils.fileWritable(FPC_CONTROL_PATH)) {
+            if(FileUtils.isFileWritable(FPC_CONTROL_PATH)) {
                 FileUtils.writeValue(FPC_CONTROL_PATH, mProxyIsNear ? "1" : "0");
             }
         }
