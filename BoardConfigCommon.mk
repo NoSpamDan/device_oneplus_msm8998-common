@@ -209,18 +209,6 @@ OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
-# Dexpreopt
-ifeq ($(HOST_OS),linux)
-  ifeq ($(WITH_DEXPREOPT),)
-    WITH_DEXPREOPT := true
-    WITH_DEXPREOPT_PIC := true
-    ifneq ($(TARGET_BUILD_VARIANT),user)
-      # Retain classes.dex in APK's for non-user builds
-      DEX_PREOPT_DEFAULT := nostripping
-    endif
-  endif
-endif
-
 # Filesystem
 TARGET_FS_CONFIG_GEN += $(PLATFORM_PATH)/config.fs
 
