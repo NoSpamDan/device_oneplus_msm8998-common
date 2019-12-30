@@ -40,7 +40,7 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
-    chmod 0444 /proc/cmdline
+    chmod 0660 /proc/cmdline
 
     # Change ownership of hw_recovery related nodes
     chown system graphics /sys/kernel/debug/dri/0/debug/dump
