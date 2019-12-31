@@ -766,7 +766,7 @@ vendor/lib64/libsdedrm.so
 vendor/lib/libhdr_tm.so
 vendor/lib64/libhdr_tm.so
 
-# Graphics - SDM - LA.UM.7.4.r1-04100-8x98.0 
+# Graphics - SDM - LA.UM.7.4.r1-04100-8x98.0
 vendor/bin/hw/vendor.display.color@1.0-service
 vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti
 vendor/etc/init/vendor.display.color@1.0-service.rc
@@ -991,7 +991,12 @@ etc/permissions/telephonyservice.xml:product/etc/permissions/telephonyservice.xm
 framework/embmslibrary.jar:product/framework/embmslibrary.jar
 framework/qcnvitems.jar:product/framework/qcnvitems.jar
 framework/qcrilhook.jar:product/framework/qcrilhook.jar
-product/framework/qti-telephony-common.jar|b1953a3599255f08f1785c677d22810f65e0167b
+
+#product/framework/qti-telephony-common.jar|b1953a3599255f08f1785c677d22810f65e0167b
+
+# Telephony (qti-telephony-common) - from DRG
+product/framework/qti-telephony-common.jar|74adbf98e89531ac385ab5c4cea3c2549a0d24b0
+
 framework/QtiTelephonyServicelibrary.jar:product/framework/QtiTelephonyServicelibrary.jar
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk:product/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/qti
