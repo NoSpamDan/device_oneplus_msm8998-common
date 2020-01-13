@@ -1,9 +1,7 @@
 [
   {
-    "repository":  "op5t-jowee/kernel_oneplus_msm8998",
-    "target_path": "kernel/oneplus/msm8998",
-    "branch":      "regression",
-    "remote":      "github"
+    "repository":  "kernel_oneplus_msm8998",
+    "target_path": "kernel/oneplus/msm8998"
   },
   {
     "repository":  "vendor_oneplus",
