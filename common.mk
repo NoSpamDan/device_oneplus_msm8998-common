@@ -23,10 +23,18 @@
 #
 
 $(call inherit-product, vendor/oneplus/msm8998-common/msm8998-common-vendor.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
+# Dalvik
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapstartsize=16m \
+    dalvik.vm.heapgrowthlimit=256m \
+    dalvik.vm.heapsize=512m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=4m \
+    dalvik.vm.heapmaxfree=8m
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -75,8 +83,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
-		$(LOCAL_PATH)/configs/com.google.android.GoogleCamera.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.google.android.GoogleCamera.xml
+    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
@@ -88,7 +95,6 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect@5.0-impl \
     android.hardware.soundtrigger@2.2-impl \
     audio.a2dp.default \
-    audio_amplifier.msm8998 \
     audio.primary.msm8998 \
     audio.r_submix.default \
     audio.usb.default \
@@ -98,6 +104,10 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libvolumelistener \
     tinymix
+
+PRODUCT_PACKAGES += \
+    audio.bluetooth.default \
+    android.hardware.bluetooth.audio@2.0-impl
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
@@ -142,7 +152,7 @@ PRODUCT_PACKAGES += \
     camera.device@1.0-impl \
     camera.device@3.2-impl \
     libshim_camera \
-    GoogleCamera
+    Snap
 
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.device@1.0 \
@@ -158,11 +168,6 @@ PRODUCT_PACKAGES += \
     cneapiclient \
     com.quicinc.cne \
     services-ext
-
-# Dex
-PRODUCT_DEXPREOPT_SPEED_APPS += \
-    SystemUI \
-		NexusLauncherRelease
 
 # Display
 PRODUCT_PACKAGES += \
@@ -185,15 +190,15 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     libqdMetaData \
     libqdMetaData.system \
-    libvulkan 
+    libvulkan
 
 PRODUCT_PACKAGES += \
     vendor.display.config@1.0 \
     vendor.display.config@1.0_vendor
 
-# Doze
+# Device
 PRODUCT_PACKAGES += \
-    Doze
+    DeviceParts
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -212,7 +217,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fs_config_files
 
-# Gatekeeper HAL
+# fwk-detect
+PRODUCT_PACKAGES += \
+    libqti_vndfwk_detect \
+    libqti_vndfwk_detect.vendor
+
+# Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl \
     android.hardware.gatekeeper@1.0-service
@@ -329,6 +339,10 @@ PRODUCT_PACKAGES += \
     android.hardware.secure_element@1.0-service \
     SecureElement
 
+# OEM Unlock reporting
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.oem_unlock_supported=1
+
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
@@ -404,12 +418,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ims-ext-common \
     ims-ext-common_system \
-    telephony-ext \
-    ims_ext_common.xml \
-    qti-telephony-hidl-wrapper \
-    qti_telephony_hidl_wrapper.xml \
-    qti-telephony-utils \
-    qti_telephony_utils.xml
+    telephony-ext
 
 PRODUCT_BOOT_JARS += \
     ims-ext-common_system \
@@ -457,7 +466,11 @@ PRODUCT_PACKAGES += \
 
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2019-10-01
+    ro.candy.build.vendor_security_patch=2019-10-01
+
+# Verity
+PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
+$(call inherit-product, build/target/product/verity.mk)
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -480,10 +493,6 @@ PRODUCT_PACKAGES += \
 # Weaver
 PRODUCT_PACKAGES += \
     android.hardware.weaver@1.0
-
-# Wallpapers
-PRODUCT_PACKAGES += \
-		PixelLiveWallpaperPrebuilt
 
 # Wifi
 PRODUCT_PACKAGES += \
@@ -515,11 +524,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     WfdCommon
 
-# Inherit from oneplus-common
-#$(call inherit-product, device/oneplus/common/common.mk)
-
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-# Never dexopt the KeyHandler
-$(call add-product-dex-preopt-module-config, com.oneplus.keyhandler, disable)
